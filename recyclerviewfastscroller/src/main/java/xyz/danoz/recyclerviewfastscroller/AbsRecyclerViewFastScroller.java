@@ -162,7 +162,9 @@ public abstract class AbsRecyclerViewFastScroller extends FrameLayout implements
                 SectionIndexer indexer = ((SectionIndexer) mRecyclerView.getAdapter());
                 int section = indexer.getSectionForPosition(position);
                 Object[] sections = indexer.getSections();
-                mSectionIndicator.setSection(sections[section]);
+                if (sections.length > 0) {
+                    mSectionIndicator.setSection(sections[section]);
+                }
             }
         }
     }

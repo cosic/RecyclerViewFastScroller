@@ -1,11 +1,11 @@
 package xyz.danoz.recyclerviewfastscroller.calculation.progress;
 
-import xyz.danoz.recyclerviewfastscroller.calculation.VerticalScrollBoundsProvider;
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+
+import xyz.danoz.recyclerviewfastscroller.calculation.VerticalScrollBoundsProvider;
 
 /**
  * Calculates scroll progress for a {@link RecyclerView} with a {@link LinearLayoutManager}
@@ -26,6 +26,8 @@ public class VerticalLinearLayoutManagerScrollProgressCalculator extends Vertica
         int lastFullyVisiblePosition = layoutManager.findLastCompletelyVisibleItemPosition();
 
         View visibleChild = recyclerView.getChildAt(0);
+        if (visibleChild == null)
+            return 0.0f;
         ViewHolder holder = recyclerView.getChildViewHolder(visibleChild);
         int itemHeight = holder.itemView.getHeight();
         int recyclerHeight = recyclerView.getHeight();
